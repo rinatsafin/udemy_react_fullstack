@@ -1,0 +1,19 @@
+header {
+  background-color: #03a9f4;
+  text-align: center;
+}
+
+.logo {
+  color: #fff;
+  font-size: 40px;
+  font-family: 'Anton'
+}
+
+header input {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.active {
+  background-color: blueviolet;
+}
