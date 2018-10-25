@@ -14,9 +14,9 @@ class App extends Component {
   }
   
   getKeyword = (e) => {
-    let keyword = e.target.value;
+    const keyword = e.target.value;
     const { news, } = this.state;
-    let filtered = news.filter(item => item.title.indexOf(keyword) > -1);
+    const filtered = news.filter(item => item.title.indexOf(keyword) > -1);
     this.setState({ filtered, })
   }
 
