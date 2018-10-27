@@ -8,6 +8,7 @@ import Posts from "./components/posts";
 import Profile from "./components/profile";
 import PostItem from "./components/post_item";
 import Lifecycles from "./components/lifecycles";
+import Conditional from "./components/conditional";
 import PageNotFound from "./components/page_not_found";
 
 const App = () => {
@@ -33,7 +34,8 @@ const App = () => {
           </NavLink>
           <br />
           <NavLink to={{ pathname: "/lifecycles" }}>Lifecycles</NavLink>
-
+          <br />
+          <NavLink to={{ pathname: "/conditional" }}>Conditional</NavLink>
           <hr />
         </header>
         <Switch>
@@ -41,6 +43,7 @@ const App = () => {
           <Route path="/posts" component={Posts} />
           <Route path="/profile" component={Profile} />
           <Route path="/lifecycles" component={Lifecycles} />
+          <Route path="/conditional" component={Conditional} />
           <Route path="/" exact component={Home} />
           <Route component={PageNotFound} />
         </Switch>
