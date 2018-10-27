@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 
 // COMPONENTS
 import Home from "./components/home";
@@ -9,8 +9,7 @@ import Profile from "./components/profile";
 import PostItem from "./components/post_item";
 
 const App = () => {
-  return (
-    <BrowserRouter>
+  return <BrowserRouter>
       <div>
         <header>
           <NavLink to="/">Home</NavLink>
@@ -19,25 +18,19 @@ const App = () => {
             Posts
           </NavLink>
           <br />
-          <NavLink
-            to={{
-              pathname: "/profile",
-              hash: "#fransis",
-              search: "?profile=true"
-            }}
-            activeStyle={{ color: "red" }}
-          >
+          <NavLink to={{ pathname: "/profile", hash: "#fransis", search: "?profile=true" }} activeStyle={{ color: "red" }}>
             Profile
           </NavLink>
           <hr />
         </header>
-        <Route path="/" exact component={Home} />
-        <Route path="/posts" exact component={Posts} />
-        <Route path="/posts/:id/:username" component={PostItem} />
-        <Route path="/profile" component={Profile} />
+        <Switch>
+          <Route path="/posts/:id/:username" component={PostItem} />
+          <Route path="/posts" component={Posts} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/" component={Home} />
+        </Switch>
       </div>
-    </BrowserRouter>
-  );
+    </BrowserRouter>;
 };
 
 ReactDOM.render(<App />, document.querySelector("#root"));
