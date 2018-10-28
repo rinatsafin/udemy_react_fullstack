@@ -4,10 +4,13 @@ import "../css/App.css";
 
 class TransitionComp extends Component {
   state = {
-    show: true
+    show: false
   };
 
-  timing = 2000;
+  timing = {
+    enter: 2000,
+    exit: 2000
+  };
 
   toggleDiv = () => {
     const { show } = this.state;
@@ -18,22 +21,24 @@ class TransitionComp extends Component {
     const { show } = this.state;
     return (
       <div>
-        <Transition in={show} timeout={this.timing} mountOnEnter unmountOnExit>
+        <Transition
+          in={show}
+          timeout={this.timing}
+          enter={true}
+          exit={true}
+          onEnter={node => {
+            console.log("ENTER");
+            console.log(node);
+          }}
+          onExit={node => {
+            console.log("EXIT");
+            console.log(node);
+          }}
+        >
           {state => (
             <div
-              style={{
-                backgroundColor: "#ec1561",
-                height: "100px",
-                transition: `all ${this.timing / 1000}s ease`,
-                padding: "20px",
-                margin: "10px",
-                color: "#fff",
-                fontSize: "30px",
-                opacity: state === "entered" || state === "exiting" ? 0 : 1
-              }}
-            >
-              {state}
-            </div>
+              className={`square square-${state}`}
+            >{`square square-${state}`}</div>
           )}
         </Transition>
         <div onClick={this.toggleDiv} className="showDiv">

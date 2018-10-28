@@ -79,7 +79,30 @@
 /*=======================================
             TRANSITIONS BASIC 
 ========================================*/
-
+.square {
+  background-color: #f43;
+  padding: 20px;
+  margin: 10px;
+  color: #fff;
+  font-size: 30px;
+  height: 100px;
+  opacity: 1;
+  transition: all 2s ease;
+}
+.square.square-entering {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.square.square-entered {
+  background-color: blue;
+}
+.square.square-exiting {
+  background-color: green;
+}
+.square.square-exited {
+  opacity: 0;
+  transform: translateX(-100%);
+}
 /*=======================================
                 CSSTRANSITIONS
 ========================================*/
