@@ -10,6 +10,7 @@ import PostItem from "./components/post_item";
 import Lifecycles from "./components/lifecycles";
 import Conditional from "./components/conditional";
 import PureComp from "./components/pure_comp";
+import User from "./components/user";
 import PageNotFound from "./components/page_not_found";
 
 const App = () => {
@@ -39,6 +40,8 @@ const App = () => {
           <NavLink to={{ pathname: "/conditional" }}>Conditional</NavLink>
           <br />
           <NavLink to={{ pathname: "/purecomp" }}>Pure Component</NavLink>
+          <br />
+          <NavLink to={{ pathname: "/user" }}>User</NavLink>
           <hr />
         </header>
         <Switch>
@@ -48,6 +51,7 @@ const App = () => {
           <Route path="/lifecycles" component={Lifecycles} />
           <Route path="/conditional" component={Conditional} />
           <Route path="/purecomp" component={PureComp} />
+          <Route path="/user" component={User} />
           <Route path="/" exact component={Home} />
           <Route component={PageNotFound} />
         </Switch>
