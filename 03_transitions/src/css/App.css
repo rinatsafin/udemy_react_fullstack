@@ -106,7 +106,19 @@
 /*=======================================
                 CSSTRANSITIONS
 ========================================*/
-
+.square.false {
+  background-color: #feaaa3;
+  transform: translateY(-100%)
+}
+.square.true {
+  transform: translateY(0)
+}
+.square-enter.square-enter-active {
+  background-color: blue;
+}
+.square-exit.square-exit-active {
+  background-color: green;
+}
 /*=======================================
                 TRANSITIONS GROUP 
 ========================================*/
