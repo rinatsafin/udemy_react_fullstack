@@ -108,10 +108,10 @@
 ========================================*/
 .square.false {
   background-color: #feaaa3;
-  transform: translateY(-100%)
+  transform: translateY(-100%);
 }
 .square.true {
-  transform: translateY(0)
+  transform: translateY(0);
 }
 .square-enter.square-enter-active {
   background-color: blue;
@@ -122,3 +122,17 @@
 /*=======================================
                 TRANSITIONS GROUP 
 ========================================*/
+.item {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease-in;
+}
+.item.active,
+.item-enter.item-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.item.item-exit.item-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+}
