@@ -3,6 +3,7 @@ import "./layout.css";
 
 // COMPONENTS
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 export default class Layout extends Component {
   state = {
@@ -21,8 +22,7 @@ export default class Layout extends Component {
           onOpenNav={() => this.toggleSideNav(true)}
         />
         {children}
-        Footer
-        <br />
+        <Footer></Footer>
       </div>
     );
   }

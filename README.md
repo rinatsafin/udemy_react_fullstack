@@ -28,3 +28,4 @@ https://www.npmjs.com/package/prop-types
 https://cdnjs.com/libraries/font-awesome
 https://github.com/gauravchl/react-simple-sidenav
 https://github.com/akiran/react-slick
+https://github.com/typicode/json-server

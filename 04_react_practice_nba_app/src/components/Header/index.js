@@ -3,20 +3,20 @@ import { Link } from "react-router-dom";
 import FontAwesome from "react-fontawesome";
 import SideNavigator from "./SideNav";
 
-import style from "./header.css";
+import styles from "./header.css";
 
 const Header = props => {
   const { onOpenNav } = props;
   const logo = () => {
     return (
-      <Link to="/" className={style.logo}>
+      <Link to="/" className={styles.logo}>
         <img src="/images/nba_logo.png" alt="NBA logo" />
       </Link>
     );
   };
   const navBars = () => {
     return (
-      <div className={style.bars}>
+      <div className={styles.bars}>
         <FontAwesome
           name="bars"
           onClick={onOpenNav}
@@ -30,9 +30,9 @@ const Header = props => {
     );
   };
   return (
-    <header className={style.header}>
+    <header className={styles.header}>
       <SideNavigator {...props} />
-      <div className={style.header_opt}>
+      <div className={styles.header_opt}>
         {navBars()}
         {logo()}
       </div>
