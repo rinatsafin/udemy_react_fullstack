@@ -25,7 +25,8 @@ https://github.com/ferlobo1985/react_fullstack/tree/3.2_transitions_final
 https://www.npmjs.com/package/prop-types
 
 # 04 React Part Practice NBA App #1
-https://cdnjs.com/libraries/font-awesome
-https://github.com/gauravchl/react-simple-sidenav
-https://github.com/akiran/react-slick
+
+https://cdnjs.com/libraries/font-awesome<br/>
+https://github.com/gauravchl/react-simple-sidenav<br/>
+https://github.com/akiran/react-slick<br/>
 https://github.com/typicode/json-server
