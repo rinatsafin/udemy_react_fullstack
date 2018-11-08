@@ -15,7 +15,8 @@ export default class User extends Component {
     getName() {
       return this.name;
     },
-    mother: "Martha"
+    mother: "Martha",
+    customValid: "success"
   };
   render() {
     return (

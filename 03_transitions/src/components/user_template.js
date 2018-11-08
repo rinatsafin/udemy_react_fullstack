@@ -17,7 +17,14 @@ UserTemplate.propTypes = {
   hobbies: PropTypes.arrayOf(PropTypes.string),
   car: PropTypes.object,
   getName: PropTypes.func,
-  mother: PropTypes.string.isRequired
+  mother: PropTypes.string.isRequired,
+  customValid: function(props, propName, componentName) {
+    if (props[propName] !== "success") {
+      return new Error(
+        `The value ${props[propName]} is incorrect, should be "success"`
+      );
+    }
+  }
 };
 
 export default UserTemplate;
