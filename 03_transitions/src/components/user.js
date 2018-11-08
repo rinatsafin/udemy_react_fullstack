@@ -16,11 +16,25 @@ export default class User extends Component {
       return this.name;
     },
     mother: "Martha",
-    customValid: "success"
+    customValid: "success",
+    color: "red"
   };
+  changeColor() {
+    // this.setState({
+    //   color: "blue"
+    // });
+    this.refs.myColor.style.color = "blue";
+  }
   render() {
+    const style = {
+      color: this.state.color
+    };
     return (
       <div>
+        <h4 style={style} ref="myColor">
+          {this.state.mother}
+        </h4>
+        <div onClick={() => this.changeColor()}>Change color</div>
         <UserTemplate {...this.state} />
       </div>
     );
