@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./layout.css";
 
+// COMPONENTS
+import Header from "../../components/Header";
+
 export default class Layout extends Component {
   state = {
     header: "Header",
@@ -11,8 +14,7 @@ export default class Layout extends Component {
     const { children } = this.props;
     return (
       <div>
-        Header
-        <br />
+        <Header />
         {children}
         Footer
         <br />
