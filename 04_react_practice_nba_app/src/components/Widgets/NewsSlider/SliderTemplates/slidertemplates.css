@@ -1,0 +1,27 @@
+.feautured_item {
+  position: relative;
+  background-color: #000;
+}
+
+.feautured_item a {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-decoration: none;
+  right: 0;
+}
+
+.feautured_image {
+  height: 330px;
+  margin: 0 auto;
+}
+
+.feautured_caption {
+  color: #fff;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  font-weight: 300;
+  box-sizing: border-box;
+  font-size: 28px;
+}

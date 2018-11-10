@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import NewsSlider from "../Widgets/NewsSlider";
 
 const Home = props => {
   return (
     <div>
-      Home
+      <NewsSlider />
     </div>
   );
 };
