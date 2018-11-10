@@ -4,18 +4,29 @@ import Slick from "react-slick";
 import styles from "./slidertemplates.css";
 
 const SliderTemplates = props => {
-  const { type, data } = props;
+  const { type, data, settings: s } = props;
   let template = null;
   const settings = {
-    dots: true,
-    infinite: true,
-    arrows: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
+      dots: false,
+      infinite: true,
+      arrows: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      ...s
   };
-
-  switch (props.type) {
+  // const settings = Object.assign(
+  //   {
+  //     dots: true,
+  //     infinite: true,
+  //     arrows: false,
+  //     speed: 500,
+  //     slidesToShow: 1,
+  //     slidesToScroll: 1
+  //   },
+  //   s
+  // );
+  switch (type) {
     case "featured":
       template = data.map(el => (
         <div key={el.id}>

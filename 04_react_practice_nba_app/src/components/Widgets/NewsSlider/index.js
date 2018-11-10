@@ -9,8 +9,9 @@ export default class NewsSlider extends Component {
   };
 
   componentDidMount() {
+    const { endpoint, start, amount } = this.props;
     axios
-      .get(`http://localhost:3004/articles?_start=0&_end=3`)
+      .get(`http://localhost:3004/${endpoint}?_start=${start}&_end=${amount}`)
       .then(response => {
         const { data: news } = response;
         this.setState({ news });
@@ -19,10 +20,11 @@ export default class NewsSlider extends Component {
   }
 
   render() {
-    const { news, } = this.state;
+    const { news } = this.state;
+    const { type, settings } = this.props;
     return (
       <div>
-        <SliderTemplates data={news} type="featured" />
+        <SliderTemplates data={news} type={type} settings={settings} />
       </div>
     );
   }
