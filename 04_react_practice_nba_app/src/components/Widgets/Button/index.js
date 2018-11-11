@@ -6,8 +6,8 @@ import styles from "./button.css";
 const Button = (props) => {
   let template = null;
   const { type, loadMore, cta } = props;
-  switch(type) {
-    case "loadmore":
+  switch (type) {
+    case "loadMore":
       template = (
         <div 
           className={styles.blue_btn}

@@ -6,11 +6,13 @@ import axios from "axios";
 import { URL } from "../../../config";
 // COMPONENT
 import Button from "../Button";
+import CardInfo from "../CardInfo";
 // STYLES
 import styles from "../NewsList/news_list.css";
 
 export default class NewsList extends Component {
   state = {
+    teams: [],
     items: [],
     start: this.props.start,
     end: this.props.start + this.props.amount,
@@ -23,9 +25,18 @@ export default class NewsList extends Component {
   }
 
   request = (start, end) => {
-    axios.get(`${URL}/articles?_start=${start}&_end=${end}`).then(response => {
+    const { items, teams } = this.state;
+    if (teams.length < 1) {
+      axios
+      .get(`${URL}/teams`)
+      .then(response => {
+        this.setState({ teams: response.data });
+      });
+    }
+    axios
+    .get(`${URL}/articles?_start=${start}&_end=${end}`)
+    .then(response => {
       const { data } = response;
-      const { items } = this.state;
       this.setState({ items: [...items, ...data] });
     });
   };
@@ -38,6 +49,7 @@ export default class NewsList extends Component {
 
   renderNews = type => {
     let template;
+    const { teams, } = this.state;
     switch (type) {
       case "card":
         template = this.state.items.map((item, i) => (
@@ -52,7 +64,7 @@ export default class NewsList extends Component {
             <div key={i}>
               <div className={styles.newslist_item}>
                 <Link to={`/articles/${item.id}`}>
-                  Teams
+                  <CardInfo teams={teams} team={item.team} date={item.date} />
                   <h2>{item.title}</h2>
                 </Link>
               </div>
@@ -67,18 +79,12 @@ export default class NewsList extends Component {
   };
 
   render() {
-    const { type } = this.props;
-    return (
-      <div>
+    const { type, } = this.props;
+    return <div>
         <TransitionGroup component="div" className="list">
           {this.renderNews(type)}
         </TransitionGroup>
-        <Button
-          type="loadmore"
-          loadMore={this.loadMore}
-          cta="Load More News"
-        />
-      </div>
-    );
+        <Button type="loadMore" loadMore={this.loadMore} cta="Load More News" />
+      </div>;
   }
 }

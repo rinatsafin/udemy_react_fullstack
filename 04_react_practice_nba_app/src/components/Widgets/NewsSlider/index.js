@@ -10,7 +10,7 @@ export default class NewsSlider extends Component {
   };
 
   componentDidMount() {
-    const { endpoint, start, amount } = this.props;
+    const { start, amount } = this.props;
     axios
       .get(`${URL}/articles?_start=${start}&_end=${amount}`)
       .then(response => {
