@@ -7,18 +7,16 @@ const Home = props => {
   return (
     <div>
       <NewsSlider
-        endpoint="articles"
         type="featured"
         start={0}
-        amount={6}
+        amount={3}
         settings={{ dots: true }}
       />
       <NewsList
-        endpoint="articles"
         type="card"
         loadmore={true}
-        start={3}
-        amount={6}
+        start={0}
+        amount={3}
       />
     </div>
   );

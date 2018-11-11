@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 //CONFIG
 import { URL } from "../../../config";
+// COMPONENT
+import Button from "../Button";
+// STYLES
 import styles from "../NewsList/news_list.css";
 
 export default class NewsList extends Component {
@@ -37,14 +40,24 @@ export default class NewsList extends Component {
     let template;
     switch (type) {
       case "card":
-        template = this.state.items.map(item => (
-          <div key={item.id}>
-            <div className={styles.newslist_item}>
-              <Link to={`/articles/${item.id}`}>
-                <h2>{item.title}</h2>
-              </Link>
+        template = this.state.items.map((item, i) => (
+          <CSSTransition
+            classNames={{
+              enter: styles.newslist_wrapper,
+              enterActive: styles.newslist_wrapper_enter
+            }}
+            timeout={500}
+            key={i}
+          >
+            <div key={i}>
+              <div className={styles.newslist_item}>
+                <Link to={`/articles/${item.id}`}>
+                  Teams
+                  <h2>{item.title}</h2>
+                </Link>
+              </div>
             </div>
-          </div>
+          </CSSTransition>
         ));
         break;
       default:
@@ -55,11 +68,17 @@ export default class NewsList extends Component {
 
   render() {
     const { type } = this.props;
-    return <div>
-        {this.renderNews(type)}
-        <div className={styles.loadmore} onClick={this.loadMore}>
-          Loadmore
-        </div>
-      </div>;
+    return (
+      <div>
+        <TransitionGroup component="div" className="list">
+          {this.renderNews(type)}
+        </TransitionGroup>
+        <Button
+          type="loadmore"
+          loadMore={this.loadMore}
+          cta="Load More News"
+        />
+      </div>
+    );
   }
 }

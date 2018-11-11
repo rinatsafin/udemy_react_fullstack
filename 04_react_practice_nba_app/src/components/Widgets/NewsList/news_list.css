@@ -25,3 +25,15 @@
   text-align: center;
   box-shadow: 2px 4px 16px 0 #000;
 }
+
+.newslist_wrapper {
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all .5s ease-in;
+}
+
+.newslist_wrapper_enter {
+  opacity: 1;
+  transform: translateX(0%);
+}
