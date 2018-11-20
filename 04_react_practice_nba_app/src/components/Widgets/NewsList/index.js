@@ -27,15 +27,11 @@ export default class NewsList extends Component {
   request = (start, end) => {
     const { items, teams } = this.state;
     if (teams.length < 1) {
-      axios
-      .get(`${URL}/teams`)
-      .then(response => {
+      axios.get(`${URL}/teams`).then(response => {
         this.setState({ teams: response.data });
       });
     }
-    axios
-    .get(`${URL}/articles?_start=${start}&_end=${end}`)
-    .then(response => {
+    axios.get(`${URL}/articles?_start=${start}&_end=${end}`).then(response => {
       const { data } = response;
       this.setState({ items: [...items, ...data] });
     });
@@ -49,7 +45,7 @@ export default class NewsList extends Component {
 
   renderNews = type => {
     let template;
-    const { teams, } = this.state;
+    const { teams } = this.state;
     switch (type) {
       case "card":
         template = this.state.items.map((item, i) => (
@@ -79,12 +75,14 @@ export default class NewsList extends Component {
   };
 
   render() {
-    const { type, } = this.props;
-    return <div>
+    const { type } = this.props;
+    return (
+      <div>
         <TransitionGroup component="div" className="list">
           {this.renderNews(type)}
         </TransitionGroup>
         <Button type="loadMore" loadMore={this.loadMore} cta="Load More News" />
-      </div>;
+      </div>
+    );
   }
 }
