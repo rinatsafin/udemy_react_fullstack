@@ -1,0 +1,25 @@
+.videosListItemWrapper {
+  display: flex;
+  flex: none;
+  border-bottom: 2px solid #d5d5d5;
+  background-color: #fff;
+}
+.videosListItemWrapper h2 {
+  font-size: 13px;
+  color: #525252;
+}
+.left {
+  background-size: cover !important;
+}
+.left div {
+  width: 90px;
+  height: 90px;
+  background-size: 40px !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+  background: url("/images/play.png");
+}
+.right {
+  flex-grow: 1;
+  padding: 10px;
+}

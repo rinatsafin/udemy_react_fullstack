@@ -1,20 +1,25 @@
-import React from 'react';
-import { Link, } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./button.css";
 
-const Button = (props) => {
+const Button = props => {
   let template = null;
-  const { type, loadMore, cta } = props;
+  const { type, loadMore, cta, linkTo } = props;
+  const { blue_btn } = styles;
   switch (type) {
     case "loadMore":
       template = (
-        <div 
-          className={styles.blue_btn}
-          onClick={loadMore}
-        >
+        <div className={blue_btn} onClick={loadMore}>
           {cta}
         </div>
+      );
+      break;
+    case "linkTo":
+      template = (
+        <Link to={linkTo} className={blue_btn}>
+          {cta}
+        </Link>
       );
       break;
     default:

@@ -2,7 +2,7 @@ import React from "react";
 // WIDGETS
 import NewsSlider from "../Widgets/NewsSlider";
 import NewsList from "../Widgets/NewsList";
-
+import VideosList from "../Widgets/VideosList";
 const Home = props => {
   return (
     <div>
@@ -12,11 +12,13 @@ const Home = props => {
         amount={3}
         settings={{ dots: true }}
       />
-      <NewsList
+      <NewsList type="card" loadmore={true} start={0} amount={3} />
+      <VideosList
         type="card"
-        loadmore={true}
+        title={true}
         start={0}
         amount={3}
+        loadMore={true}
       />
     </div>
   );
