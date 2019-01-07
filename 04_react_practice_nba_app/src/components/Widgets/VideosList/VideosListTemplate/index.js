@@ -4,22 +4,21 @@ import { Link } from "react-router-dom";
 import CardInfo from "../../CardInfo";
 import styles from "./videosListTemplate.css";
 
-const VideosListTemplate = props => {
-  const { data } = props;
-  console.log(data);
-  return data.map((item, idx) => (
-    <Link to={`/videos/${item.id}`} key={idx}>
+const VideosListTemplate = ({ data, teams }) => {
+  return data.map(({ id, name, title, image, team, date }, idx) => (
+    <Link to={`/videos/${id}`} key={idx}>
       <div className={styles.videosListItemWrapper}>
         <div
           className={styles.left}
           style={{
-            background: `url(images/videos/${item.image}) no-repeat 50% 0`
+            background: `url(images/videos/${image}) no-repeat 50% 0`
           }}
         >
-          <div>{item.name}</div>
+          <div>{name}</div>
         </div>
         <div className={styles.right}>
-          <h2>{item.title}</h2>
+          <CardInfo teams={teams} team={team} date={date} />
+          <h2>{title}</h2>
         </div>
       </div>
     </Link>

@@ -11,14 +11,10 @@ import CardInfo from "../CardInfo";
 import styles from "../NewsList/news_list.css";
 
 export default class NewsList extends Component {
-  state = {
-    teams: [],
-    items: [],
-    start: this.props.start,
-    end: this.props.start + this.props.amount,
-    amount: this.props.amount
-  };
-
+  constructor({ start, amount }) {
+    super({ start, amount });
+    this.state = { teams: [], items: [], start, end: start + amount, amount };
+  }
   componentDidMount() {
     const { start, end } = this.state;
     this.request(start, end);
@@ -48,20 +44,20 @@ export default class NewsList extends Component {
     const { teams } = this.state;
     switch (type) {
       case "card":
-        template = this.state.items.map((item, i) => (
+        template = this.state.items.map(({ team, title, date, id }, idx) => (
           <CSSTransition
             classNames={{
               enter: styles.newslist_wrapper,
               enterActive: styles.newslist_wrapper_enter
             }}
             timeout={500}
-            key={i}
+            key={idx}
           >
-            <div key={i}>
+            <div key={idx}>
               <div className={styles.newslist_item}>
-                <Link to={`/articles/${item.id}`}>
-                  <CardInfo teams={teams} team={item.team} date={item.date} />
-                  <h2>{item.title}</h2>
+                <Link to={`/articles/${id}`}>
+                  <CardInfo teams={teams} team={team} date={date} />
+                  <h2>{title}</h2>
                 </Link>
               </div>
             </div>

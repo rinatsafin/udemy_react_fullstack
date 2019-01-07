@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 
 import styles from "./button.css";
 
-const Button = props => {
+const Button = ({ type, loadMore, cta, linkTo }) => {
   let template = null;
-  const { type, loadMore, cta, linkTo } = props;
   const { blue_btn } = styles;
   switch (type) {
     case "loadMore":

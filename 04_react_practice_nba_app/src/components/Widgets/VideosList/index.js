@@ -7,9 +7,8 @@ import Button from "../Button";
 import VideosListTemplate from "./VideosListTemplate";
 
 export default class VideosList extends Component {
-  constructor(props) {
-    super(props);
-    const { start, amount } = props;
+  constructor({ start, amount }) {
+    super({ start, amount });
     this.state = {
       teams: [],
       title: false,
@@ -42,8 +41,13 @@ export default class VideosList extends Component {
     // );
     axios.get(`${URL}/videos?_start=${start}&_end=${end}`).then(response =>
       this.setState((prevState, { videos = response.data }) => {
-        const { videos: oldVideosList } = prevState;
-        return { ...prevState, videos: [...oldVideosList, ...videos] };
+        const { videos: prevVideosList } = prevState;
+        return {
+          ...prevState,
+          videos: [...prevVideosList, ...videos],
+          start,
+          end
+        };
       })
     );
   };
@@ -63,7 +67,8 @@ export default class VideosList extends Component {
     return template;
   };
   loadMoreVideos = () => {
-    return "";
+    const { end, amount } = this.state;
+    this.request(end, end + amount);
   };
   renderTitle = () => {
     return (
@@ -76,7 +81,7 @@ export default class VideosList extends Component {
     loadMore ? (
       <Button
         type="loadMore"
-        loadmore={() => this.loadMoreVideos()}
+        loadMore={this.loadMoreVideos}
         cta="Load More Videos"
       />
     ) : (
